@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+  <head>
+
+  </head>
+  <body>
+      <div th:fragment="nav">
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-secondary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><h2>Technogory Store</h2></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-left: 3%;">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/customer}"><strong style="color: white;">Quản lý khách hàng</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/category}"><strong style="color: white;">Quản lý nhãn hàng</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/product}"><strong style="color: white;">Quản lý sản phẩm</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/order}"><strong style="color: white;">Quản lý đơn hàng</strong></a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#"><strong style="color: white;">Quản lý profile</strong></a>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/report}"><strong style="color: white;">Quản lý thống kê</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout"><strong style="color: white;">Đăng Xuất</strong></a>
+              </li>             
+            </ul>
+          </div>
+        </div>
+      </nav>
+</div>
+  </body>
+</html>

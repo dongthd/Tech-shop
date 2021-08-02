@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+
+<head>
+
+</head>
+<body>
+	<section class="container" layout:fragment="content">
+		<div class="col mt-4">
+			<div class="card">
+				<div class="card-body">
+
+					<button class="btn btn-info">
+						<a th:href="@{/admin/category/add}"
+							style="color: white; text-decoration: none;"> Thêm mới nhãn
+							hiệu</a>
+					</button>
+					<hr>
+					<div th:if="${message != null}" class="alert alert-primary"
+						role="alert">
+						<i>[[${message}]]</i>
+					</div>
+
+					<div class="col">
+						<form action="#" th:action="@{/admin/category/search}">
+							<div class="form-inline float-right">
+								<input type="text" class="form-control" name="name" id="name"
+									aria-describedby="helpId" placeholder="Search">
+								<button class="btn btn-info">Search</button>
+							</div>
+						</form>
+					</div>
+					<br>
+
+					<form action="" method="get">
+						<label for="size">Page Size: </label> <select name="size"
+							id="size" class="form control"
+							onchange="this.form.submit()">
+							<option th:selected="${categoryPage.size == 5}" value="5">5</option>
+							<option th:selected="${categoryPage.size == 10}" value="10">10</option>
+							<option th:selected="${categoryPage.size == 15}" value="15">15</option>
+							<option th:selected="${categoryPage.size == 20}" value="20">20</option>
+						</select>
+					</form>
+
+					<div class="row" th:if="${!categoryPage.hasContent()}">
+						<div class="col">
+							<div class="alert alert-danger" role="alert">
+								<strong>Không tìm thấy</strong>
+							</div>
+						</div>
+					</div>
+					<table th:if="${categoryPage.hasContent()}"
+						class="table table-bordered">
+						<tr class="table-danger">
+							<th style="text-align: center;">Mã nhãn hiệu</th>
+							<th style="text-align: center;">Tên nhãn hiệu</th>
+							<th style="text-align: center;">Hoạt động</th>
+						</tr>
+
+						<tbody>
+							<tr th:each="category, iStat : ${categoryPage.content}">
+								<td style="text-align: center;" th:text="${category.categoryId}"></td>
+								<td th:text="${category.name}"></td>
+								<td style="text-align: center;"><a
+									class="badge bg-warning text-dark"
+									style="text-decoration: none;"
+									th:href="@{/admin/category/edit/{categoryId}(categoryId=${category.categoryId})}"><span
+										style="color: white;">Edit</span></a> <a
+									class="badge bg-danger text-dark"
+									style="text-decoration: none; color: white;"
+									th:href="@{/admin/category/delete/{categoryId}(categoryId=${category.categoryId})}"><span
+										style="color: white;">Delete</span></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col">
+					<nav aria-label="Page navigation"
+						th:if="${categoryPage.totalPages > 0}">
+						<ul class="pagination justify-content-center">
+							<li
+								th:class="${1 == categoryPage.number + 1} ? 'page-item active' : 'page-item'">
+								<a
+								th:href="@{/admin/category/searchpaginated(name = ${name}, size=${categoryPage.size}, page=${1})}"
+								class="page-link" href="#" aria-label="First">first </a>
+							</li>
+							<li class="page-item active"
+								th:each="pageNumber : ${pageNumbers}"
+								th:if="${categoryPage.totalPages > 1}"
+								th:class="${pageNumber == categoryPage.number + 1} ? 'page-item active' : 'page-item'">
+								<a
+								th:href="@{/admin/category/searchpaginated(name = ${name}, size=${categoryPage.size}, page=${pageNumber})}"
+								class="page-link" th:text="${pageNumber}"> </a>
+							</li>
+							<li class="page-item"
+								th:class="${categoryPage.totalPages == categoryPage.number + 1} ? 'page-item active' : 'page-item'">
+								<a
+								th:href="@{/admin/category/searchpaginated(name = ${name}, size=${categoryPage.size}, page=${categoryPage.totalPages})}"
+								class="page-link" href="#" aria-label="Last">Last </a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+</html>

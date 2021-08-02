@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+<body>
+	<section class="container border mt-4" layout:fragment="content">
+		<div class="col mt-2">
+			<div class="card-body">
+				<div class="col mb-2">
+					<form action="#">
+						<div class="form-inline float-right">
+							<input type="text" class="form-control" name="name" id="name"
+								aria-describedby="helpId" placeholder="Tìm kiếm">
+							<button class="btn btn-info">Tìm kiếm</button>
+						</div>
+					</form>
+					<br>
+					<form action="" method="get" >
+						<button class="btn btn-info"><i class="fa fa-list" aria-hidden="true"></i><a href="">Thông tin khách hàng Order</a></button>
+					</form>
+				</div>
+
+				<div th:if="${message != null}" class="alert alert-primary" role="alert">
+                <i>[[${message}]]</i>
+              </div>
+
+				<table class="table table-bordered">
+					<tr class="table-danger" style="text-align: center;">
+						<th>STT</th>
+						<th>Mã order</th>
+						<th>Tên sản phẩm</th>
+						<th>Trạng thái</th>
+						<!-- <th>Ngày đặt</th> -->
+						<th>Tổng tiền</th>
+						<!-- <th>Chi tiết</th> -->
+						<th>Hành động</th>
+					</tr>
+
+					<tbody>
+						<tr style="text-align: center;" th:each="order, iState : ${listOrder}">
+							<!-- <td th:text="${iState.index + 1}"></td>
+							<td th:text="${orderDetail.order.orderId}"></td>
+							<td th:text="${orderDetail.product.name}"></td>
+							<td th:text="${orderDetail.status}"></td>
+							<td th:text="${orderDetail.totalPrice}"></td>
+							<td th:text="${order.totalPrice}"></td>
+							<td><a th:href="@{/admin/order/editorder}" style="text-decoration: none"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi tiết</a></td>
+							<td>
+								<a th:href="@{/admin/order/editorder/{orderDetailId}(orderDetailId=${orderDetail.orderDetailId})}" style="text-decoration: none;"><i class="fa fa-check-circle" aria-hidden="true" style="color: green;"></i>Xác nhận</a>
+								<a th:href="@{/admin/order/editorder}" style="text-decoration: none"><i class="fa fa-check-circle" aria-hidden="true" style="color: green;"></i> Xác nhận </a> |
+								<a th:href="@{/admin/order/delete/{orderDetailId}(orderDetailId=${orderDetail.orderDetailId})}" style="text-decoration: none"><i class="fa fa-times" aria-hidden="true" style="color: red;"></i> Hủy</a>
+								</td> -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<form action="" method="get">
+				<label for="size">Hiển thị: </label> <select name="size" id="size"
+					class="form control">
+					<option value="">Tất cả</option>
+					<option value="">5</option>
+					<option value="">10</option>
+					<option value="">15</option>
+					<option value="">20</option>
+				</select>
+			</form>
+
+			<form action="">
+				<div class="form-group" style="padding-left: 40%;">
+					<ul class="pagination">
+						<li class="page-item"><a class="page-link" href="#">First</a></li>
+						<li class="page-item"><a class="page-link" href="#">Prev</a></li>
+						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+						<li class="page-item"><a class="page-link" href="#">Last</a></li>
+					</ul>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

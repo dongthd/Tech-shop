@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+
+<head>
+
+</head>
+<body>
+	<section class="row mt-5" layout:fragment="content">
+           <div class="col-10 offset-1 mt-4">
+             <form action="#" th:action="@{/admin/order/editorder}" th:object="${orderDetail}" method="post">
+             <div class="card">
+                 <div class="col mt-3">
+                     <h4 style="color: red; text-align: center;"><em>CHECK ORDER</em></h4>
+						<hr>
+						<div th:if="${message != null}" class="alert alert-primary" role="alert">
+									<i>[[${message}]]</i>
+								</div>
+                 </div>
+                 <div class="card-body">
+                     <div class="form-group">
+                       <label for="orderDetailId">Mã OrderDetail <a style="color: red"><strong>*</strong></a></label>
+                       <!-- <input type="hidden" th:field="*{isEdit}"> -->
+                       <input type="text" th:field="*{orderDetailId}" class="form-control" name="orderDetailId" id="orderDetailId" aria-describedby="orderDetailhelpId" placeholder="Mã hàng hóa ?" readonly="readonly">
+                       <!-- <small th:if="${#fields.hasErrors('categoryId')}" id="categoryhelpId" class="form-text text-muted">Category id is required</small> -->
+                     </div>
+                     
+                     <div class="form-group">
+                       <label for="orderDetailId">Mã Order <a style="color: red"><strong>*</strong></a></label>
+                       <!-- <input type="hidden" th:field="*{isEdit}"> -->
+                       <input type="text" th:field="*{order.orderId}" class="form-control" name="orderDetailId" id="orderDetailId" aria-describedby="orderDetailhelpId" placeholder="Mã hàng hóa ?" readonly="readonly">
+                       <!-- <small th:if="${#fields.hasErrors('categoryId')}" id="categoryhelpId" class="form-text text-muted">Category id is required</small> -->
+                     </div>
+                     
+                     <!-- <div class="form-group">
+                       <label for="orderDetailId">Tên khách hàng <a style="color: red"><strong>*</strong></a></label>
+                       <input type="hidden" th:field="*{isEdit}">
+                       <input type="text" th:field="*{receiver}" class="form-control" name="receiver" id="receiver" aria-describedby="receiverhelpId" placeholder="Mã hàng hóa ?" readonly="readonly">
+                       <small th:if="${#fields.hasErrors('categoryId')}" id="categoryhelpId" class="form-text text-muted">Category id is required</small>
+                     </div> -->
+                     
+                     <div class="form-group">
+                       <label for="orderDetailId">Mã sản phẩm <a style="color: red"><strong>*</strong></a></label>
+                       <!-- <input type="hidden" th:field="*{isEdit}"> -->
+                       <input type="text" th:field="*{product.productId}" class="form-control" name="orderDetailId" id="orderDetailId" aria-describedby="orderDetailhelpId" placeholder="Mã hàng hóa ?" readonly="readonly">
+                       <!-- <small th:if="${#fields.hasErrors('categoryId')}" id="categoryhelpId" class="form-text text-muted">Category id is required</small> -->
+                     </div>
+                     
+                     <div class="form-group">
+                       <label for="orderDetailId">Số lượng <a style="color: red"><strong>*</strong></a></label>
+                       <!-- <input type="hidden" th:field="*{isEdit}"> -->
+                       <input type="text" th:field="*{quantity}" class="form-control" name="orderDetailId" id="orderDetailId" aria-describedby="orderDetailhelpId" placeholder="Mã hàng hóa ?" readonly="readonly">
+                       <!-- <small th:if="${#fields.hasErrors('categoryId')}" id="categoryhelpId" class="form-text text-muted">Category id is required</small> -->
+                     </div>
+                     
+                     <div class="form-group">
+                       <label for="orderDetailId">Giảm giá <a style="color: red"><strong>*</strong></a></label>
+                       <!-- <input type="hidden" th:field="*{isEdit}"> -->
+                       <input type="text" th:field="*{discount}" class="form-control" name="orderDetailId" id="orderDetailId" aria-describedby="orderDetailhelpId" placeholder="" readonly="readonly">
+                       <!-- <small th:if="${#fields.hasErrors('categoryId')}" id="categoryhelpId" class="form-text text-muted">Category id is required</small> -->
+                     </div>
+                     
+                     <div class="form-group">
+                       <label for="orderDetailId">Tổng tiền <a style="color: red"><strong>*</strong></a></label>
+                       <!-- <input type="hidden" th:field="*{isEdit}"> -->
+                       <input type="text" th:field="*{totalPrice}" class="form-control" name="orderDetailId" id="orderDetailId" aria-describedby="orderDetailhelpId" placeholder="Mã hàng hóa ?" readonly="readonly">
+                       <!-- <small th:if="${#fields.hasErrors('categoryId')}" id="categoryhelpId" class="form-text text-muted">Category id is required</small> -->
+                     </div>
+                     
+                     <div class="form-group">
+                          <label>Trạng thái:</label>
+                          <select th:field="*{status}" class="form-control">
+							    <option th:value="'Đã Thanh Toán <3'" >Đã Thanh Toán</option>
+							    <option th:value="'Đang Giao Dịch ...'">Đang Giao Dịch</option>
+							</select>
+                      </div>
+                     <button type="submit" class="btn btn-info btn-fill pull-right">Cập nhật</button>
+                     <div class="clearfix"></div>
+                 </div>
+             </div>
+             
+           </form>
+           </div>
+	</section>
+</body>
+</html>

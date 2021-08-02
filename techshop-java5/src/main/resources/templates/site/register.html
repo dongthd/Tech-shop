@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>TECH STORE - Multipurpose eCommerce HTML5 Template</title>
+
+<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/ionicons.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<!-- JavaScripts -->
+<script src="js/modernizr.js"></script>
+
+<!-- Online Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  <!-- header -->
+  <header>
+    <div class="sticky">
+      <div class="container"> 
+        
+        <!-- Logo -->
+        <div class="logo">
+          <!-- <a href="index.html"><img class="img-responsive" src="images/logo.png" alt="" ></a> -->
+          <a class="nav-link active" aria-current="page" href="/"><h4>Tech Store</h4></a>
+        </div>
+        <nav class="navbar ownmenu">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"><i class="fa fa-navicon"></i></span> </button>
+          </div>
+          
+          <!-- NAV -->
+          <div class="collapse navbar-collapse" id="nav-open-btn">
+            <ul class="nav">
+              <li class="dropdown active"> <a href="/" class="dropdown-toggle" data-toggle="dropdown">Trang chủ</a>
+              </li>
+              <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cửa hàng</a>
+                <ul class="dropdown-menu">
+                  <li> <a href="error">Shop 01 </a> </li>
+                  <li> <a href="shop">Shop chuột máy tính</a> </li>
+                </ul>
+              </li>
+              <li> <a href="/abc"> Liên hệ</a> </li>
+              
+              <li><a href="login">Đăng nhập</a></li>
+              <li><a href="register">Đăng kí</a></li>
+              
+            </ul>
+          </div>
+          
+          <!-- Nav Right -->
+          <div class="nav-right">
+            <ul class="navbar-right">
+              
+              <!-- USER INFO -->
+              <li class="dropdown user-acc"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" ><i class="icon-user"></i> </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <h6 th:text ="'Xin chào !'"></h6>
+                  </li>
+                  <li><a href="/cartItem">MY CART</a></li>
+                  <li><a href="/logout">LOG OUT</a></li>
+                </ul>
+              </li>
+              <!-- USER BASKET -->
+              <li class="dropdown user-basket"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="icon-basket-loaded"></i> </a>
+                <ul class="dropdown-menu">
+                  <li class="margin-0">
+                    <div class="row">
+                      <div class="col-xs-6"> <a href="cartItem" class="btn">XEM GIỎ HÀNG</a></div>
+                      <div class="col-xs-6 "> <a href="checkout" class="btn">THANH TOÁN</a></div>
+                    </div>
+                  </li>
+                 
+                </ul>
+              </li>
+              
+              <!-- SEARCH BAR -->
+              <li class="dropdown"> <a href="javascript:void(0);" class="search-open"><i class=" icon-magnifier"></i></a>
+                <div class="search-inside animated bounceInUp"> <i class="icon-close search-close"></i>
+                  <div class="search-overlay"></div>
+                  <div class="position-center-center">
+                    <div class="search">
+                      <form action="#" th:action="@{/searchProduct}" method="post">
+                        <input type="search" name="name" placeholder="Search Shop">
+                        <button type="submit"><i class="icon-check"></i></button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!--======= SUB BANNER =========-->
+  <section class="sub-bnr" data-stellar-background-ratio="0.5">
+    <div class="position-center-center">
+      <div class="container">
+        <h4>Đăng ký ngay</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</p>
+        <ol class="breadcrumb">
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Pages</a></li>
+          <li class="active">Đăng ký</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!--======= PAGES INNER =========-->
+    <section class="chart-page padding-top-100 padding-bottom-100">
+      <div class="container"> 
+        
+        <!-- Payments Steps -->
+        <div class="shopping-cart"> 
+          
+          <!-- SHOPPING INFORMATION -->
+          <div class="cart-ship-info register">
+            <div class="row"> 
+              
+              <!-- ESTIMATE SHIPPING & TAX -->
+              <div class="col-sm-12">
+                <h6>ĐĂNG KÝ</h6>
+                <form action="#" th:action="@{/registered}" th:object="${customer}" method="post">
+                  <ul class="row">
+                    <!--Full Name -->
+                    <li class="col-md-6">
+                      <label> *HỌ VÀ TÊN
+                        <input type="text" th:field="*{fullname}" value="" placeholder="HỌ VÀ TÊN ?" required="true">
+                      </label>
+                      <!-- <small th:if="${#fields.hasErrors('fullname')}" id="fullnamehelpId" class="form-text text-muted"><a style="color: red">Tên là bắt buộc và hợp lệ !</a></small> -->
+                    </li>
+                    
+                    <!-- ID LOGIN -->
+                    <li class="col-md-6">
+                      <label> *TÊN ĐĂNG NHẬP
+                        <input type="text" th:field="*{customerId}" name="customerId" aria-describedby="customerhelpId" value="" placeholder="TÊN ĐĂNG NHẬP ?" required="true">
+                        <!-- <th:block class="alert alert-warning" th:if="${#fields.hasErrors('customerId')}" th:errors="*{customerId}"></th:block>> -->
+                      </label>
+                    </li>
+                    <!-- EMAIL ADDRESS -->
+                    <li class="col-md-6">
+                      <label> *EMAIL ADDRESS
+                        <input type="email" th:field="*{email}" name="email" value="" placeholder="EMAIL ADDRESS ?" required="true">
+                      </label>
+                    </li>
+                    <!-- LAST NAME -->
+                    <li class="col-md-6">
+                      <label> *MẬT KHẨU
+                        <input type="password" th:field="*{password}" name="password" value="" placeholder="MẬT KHẨU ?" required="true">
+                      </label>
+                    </li>
+                    <!-- SUBMIT -->
+                    <li class="col-md-6">
+                      <button type="submit" class="btn">ĐĂNG KÝ NGAY</button>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About -->
+    <section class="small-about padding-top-150 padding-bottom-150">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>about Technogory Store</h4>
+          <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odio luctus non. Nulla lacinia,
+            eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
+        </div>
+        
+        <!-- Social Icons -->
+        <ul class="social_icons">
+          <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+          <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+          <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+          <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+          <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+        </ul>
+      </div>
+    </section>
+    
+    
+    <section class="news-letter padding-top-150 padding-bottom-150">
+      <div class="container">
+        <div class="heading light-head text-center margin-bottom-30">
+          <h4>BẢN TIN</h4>
+          <span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>
+        <form>
+          <input type="email" placeholder="nhập địa chỉ email của bạn !" required>
+          <button type="submit">GỬi</button>
+        </form>
+      </div>
+    </section>
+  </div>
+  
+  <!--======= FOOTER =========-->
+  <footer>
+    <div class="container"> 
+      
+      <!-- ABOUT Location -->
+      <div class="col-md-3">
+        <div class="about-footer">
+          <!-- <img class="margin-bottom-30" src="images/logo-foot.png" alt="" > -->
+          <h4 style="color: #fff;">Tech Store</h4>
+          <p><i class="icon-pointer"></i> Việt Nam </p>
+          <p><i class="icon-call-end"></i> 0917291997</p>
+          <p><i class="icon-envelope"></i> info@TechStore.com</p>
+        </div>
+      </div>
+      
+      <!-- HELPFUL LINKS -->
+      <div class="col-md-3">
+        <h6>Liên kết hữu ích</h6>
+        <ul class="link">
+          <li><a href="#."> Các sản phẩm</a></li>
+          <li><a href="#."> Tìm một cửa hàng</a></li>
+          <li><a href="#."> Đặc trưng</a></li>
+          <li><a href="#."> Chính sách bảo mật</a></li>
+          <li><a href="#."> Blog</a></li>
+          <li><a href="#."> Bộ báo chí </a></li>
+        </ul>
+      </div>
+      
+      <!-- SHOP -->
+      <div class="col-md-3">
+        <h6>Cửa tiệm</h6>
+        <ul class="link">
+          <li><a href="#."> Về chúng tôi</a></li>
+          <li><a href="#."> Nghề nghiệp</a></li>
+          <li><a href="#."> Phương thức vận chuyển</a></li>
+          <li><a href="#."> Địa chỉ</a></li>
+          <li><a href="#."> Hỗ trợ</a></li>
+          <li><a href="#."> Nhà bán lẻ</a></li>
+        </ul>
+      </div>
+      
+      <!-- MY ACCOUNT -->
+      <div class="col-md-3">
+        <h6>Tài khoản của tôi</h6>
+        <ul class="link">
+          <li><a href="#."> Đăng nhập</a></li>
+          <li><a href="#."> Tài khoản của tôi</a></li>
+          <li><a href="#."> Giỏ hàng của tôi</a></li>
+          <li><a href="#."> Danh sách yêu thích</a></li>
+          <li><a href="#."> Thủ tục thanh toán</a></li>
+        </ul>
+      </div>
+      
+      <!-- Rights -->
+      
+      <div class="rights">
+        <p>©  2021 Tech Store All right reserved. </p>
+        <div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!--======= RIGHTS =========--> 
+  
+</div>
+<script src="js/jquery-1.11.3.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/own-menu.js"></script> 
+<script src="js/jquery.lighter.js"></script> 
+<script src="js/owl.carousel.min.js"></script> 
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script> 
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script> 
+<script src="js/main.js"></script> 
+<script src="js/main.js"></script>
+</body>
+</html>

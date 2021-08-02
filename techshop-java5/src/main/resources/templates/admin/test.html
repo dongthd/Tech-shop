@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}"
+    >
+    
+<head>
+
+</head>
+<body>
+	<main class="container" layout:fragment= "content">
+            <header class="row text-center">
+            </header>
+            <section class="row">
+              <div class="col mt-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h2>List of Products</h2>
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-inverse">
+                      <thead class="thead-inverse">
+                        <tr>
+                          <th>ID</th>
+                          <th>image</th>
+                          <th>Name</th>
+                          <th>Quantity</th>
+                          <th>Unit Price</th>
+                          <th>Discount</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>01</td>
+                            <td><img src="images/DSC_0004.jpg" width="70" class="img-fluid" alt=""></td>
+                            <td>Hat</td>
+                            <td>500</td>
+                            <td>50.4</td>
+                            <td>5%</td>
+                            <td>BestSeller</td>
+                            <td>Clothes</td>
+                            <td>
+                              <a href="" class="btn btn-outline-info"><i class="fas fa-info"></i></a>
+                              <a href="" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
+                              <a href="" class="btn btn-outline-danger"><i class="fas fa-recycle"></i></a>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>01</td>
+                            <td><img src="images/DSC_0004.jpg" width="70" class="img-fluid" alt=""></td>
+                            <td>Hat</td>
+                            <td>500</td>
+                            <td>50.4</td>
+                            <td>5%</td>
+                            <td>BestSeller</td>
+                            <td>Clothes</td>
+                            <td>
+                              <a href="" class="btn btn-outline-info"><i class="fas fa-info"></i></a>
+                              <a href="" class="btn btn-outline-warning"><i class="fas fa-edit"></i></a>
+                              <a href="" class="btn btn-outline-danger"><i class="fas fa-recycle"></i></a>
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+                    </table>
+                  </div>
+                  <div class="card-footer text-muted">
+                    <form action="" method="get">
+                      <div class="form-inline float-left">
+                        <label for="">Page Size : </label>
+                        <select class="form-control" name="" id="">
+                          <option>5</option>
+                          <option>10</option>
+                          <option>20</option>
+                        </select>
+                      </div>
+                    </form>
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+                
+              </div>
+            </section>
+            <footer class="row"></footer>
+        </main>
+</body>
+</html>

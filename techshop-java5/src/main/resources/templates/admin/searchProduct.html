@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+
+<head>
+
+</head>
+<body>
+	<section class="container border mt-4" layout:fragment= "content">
+        <div class="col mt-2">
+            <div class="card-body">
+              <div class="col mb-2">
+                <form action="#" th:action="@{/admin/product/searchProduct}">
+                  <div class="form-inline float-right">
+                    <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Tìm kiếm">
+                    <button class="btn btn-info">Tìm kiếm</button>
+                  </div>
+                </form>
+                <br>
+                <br>
+
+                <!-- <form action="" method="get">
+                  <button class="btn btn-info"><a th:href="@{/admin/product/add}" style="color: white; text-decoration: none;">Thêm mới sản phẩm</a></button>
+                  <label for="size">Thông tin: </label>
+                  <select name="size"
+                    id="size" class="form control">
+                    <option value="">Tất cả</option>
+                    <option value="">Nhan hang</option>
+                    <option value="">nhan hang</option>
+                    <option value="">Giá giảm dần</option>
+                    <option value="">Giá tăng dần</option>
+                  </select>
+                  </form> -->
+              </div>
+
+              <div th:if="${message != null}" class="alert alert-primary" role="alert">
+                <i>[[${message}]]</i>
+              </div>
+              
+              <table class="table table-bordered">
+                  <tr class="table-danger" style="text-align: center;">
+                    <th>Mã SP</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Giảm giá</th>
+                    <!-- <th>Nhãn hàng</th> -->
+                    <th>Ngày thêm</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                  </tr>
+                  
+                  <tbody>
+                    <tr th:each="product, iStat : ${products}" style="text-align: center;">
+                      <td th:text="${product.productId}"></td>
+                      <td> <img class="img-fluid" style="height: 80px" th:src="@{'/loadImage?imageName='+${product.image}}"><td>
+                       <p th:text="${product.name}"></p>
+                      <td th:text="${product.quantity}"></td>
+                      <td th:text="${product.unitPrice}"></td>
+                      <td th:text="${product.discount}"></td>
+                      <!-- <td th:text="${product.category.name}"></td> -->
+                      <td th:text="${product.enteredDate}"></td>
+                      <td th:text="${product.status}"></td>
+                      <td>
+                        <a th:href="@{'/admin/product/edit/' + ${product.productId}}" class="badge badge-info">Sửa</a>
+                        <!-- <a th:href="@{'/admin/product/delete/' + ${product.productId}}" class="badge badge-danger">Xóa</a> -->
+                        <a th:data-id="${product.productId}"
+                        	th:data-name="${product.name}"
+                        	onclick = "showConfirmModalDialog(this.getAttribute('data-id'), this.getAttribute('data-name'))"
+                         class="badge badge-danger">Xóa</a>
+                      </td>
+                  </tbody>
+              </table>
+              
+              <script>
+              		function showConfirmModalDialog(id, name){
+              			$('#productName').text(name);
+              			$('#yesOption').attr('href', '/admin/product/delete/' + id);
+              			$('#confirmationId').modal('show');
+              		}
+              </script>
+              <!-- Modal -->
+				<div class="modal" id="confirmationId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Xác nhận !!!</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        Bạn có muốn xóa sản phẩm : "<span id="productName"></span>"
+				      </div>
+				      <div class="modal-footer">
+				      	<a id="yesOption" type="button" class="btn btn-danger">Yes</a>
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+            </div>
+            
+            <form action="" method="get">
+              <label for="size">Hiển thị: </label>
+              <select name="size"
+                id="size" class="form control">
+                <option value="">Tất cả</option>
+                <option value="">5</option>
+                <option value="">10</option>
+                <option value="">15</option>
+                <option value="">20</option>
+              </select>
+              </form>
+            
+            <form action="">
+              <div class="form-group" style="padding-left: 40%;">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">First</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Last</a></li>
+                </ul>
+              </div>
+            </form> 
+        </div>
+      </section>
+</body>
+</html>

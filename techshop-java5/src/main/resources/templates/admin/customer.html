@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+  <head>
+</head>
+  <body>
+      <section class="container border mt-4" layout:fragment="content">
+        <div class="col mt-2">               
+            <div class="card-body">              
+              <div class="col mb-2">
+                <form action="#">
+                  <div class="form-inline float-right">
+                    <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Tìm kiếm">
+                    <button class="btn btn-info">Tìm kiếm</button>
+                  </div>
+                </form>
+                <br><br>
+
+              </div>
+
+              <!-- <div th:if="${message != null}" class="alert alert-primary" role="alert">
+                <i>[[${message}]]</i>
+              </div> -->
+              
+              <table class="table table-bordered">
+                  <tr class="table-danger" style="text-align: center;">
+                    <th>No.</th>
+                    <th>Tên khách hàng</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Email</th>
+                    <th>Mật khẩu</th>
+                    <th>Hành động</th>
+                  </tr>
+                  
+                  <tbody>
+                    <tr th:each="customer, iState : ${listCustomer}">
+                      <td style="text-align: center;" th:text="${iState.index + 1}"></td>
+                      <td th:text="${customer.fullname}"></td>
+                      <td th:text="${customer.customerId}"></td>
+                      <td th:text="${customer.email}"></td>
+                      <td th:text="${customer.password}">******</td>
+                      <td style="text-align: center;">
+                        <a href="" class="badge badge-info">Sửa</a>
+                        <a href="" class="badge badge-danger">Xóa</a>
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+            
+            <form action="" method="get">
+              <label for="size">Hiển thị: </label>
+              <select name="size"
+                id="size" class="form control">
+                <option value="">Tất cả</option>
+                <option value="">5</option>
+                <option value="">10</option>
+                <option value="">15</option>
+                <option value="">20</option>
+              </select>
+              </form>
+            
+            <form action="">
+              <div class="form-group" style="padding-left: 40%;">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">First</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Last</a></li>
+                </ul>
+              </div>
+            </form> 
+        </div>
+      </section>
+  </body>
+</html>

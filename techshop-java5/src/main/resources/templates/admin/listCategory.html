@@ -1,0 +1,172 @@
+<!-- <!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Title</title>
+Required meta tags
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+Bootstrap CSS
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+	integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-secondary">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/admin/category}"><h2>Technogory Store</h2></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent"
+				style="padding-left: 3%;">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link" href="#"><strong
+							style="color: white;">Quản lý khách hàng</strong></a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/admin/category}"><strong
+							style="color: white;">Quản lý nhãn hàng</strong></a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/admin/product}"><strong
+							style="color: white;">Quản lý sản phẩm</strong></a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><strong
+							style="color: white;">Quản lý đơn hàng</strong></a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><strong
+							style="color: white;">Quản lý profile</strong></a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><strong
+							style="color: white;">Quản lý thống kê</strong></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container border mt-3 mb-3">
+		<section class="row">
+			<div class="col">
+				<div class="card-body">
+					
+					<div class="row mb-2"></div>
+					<form action="#" th:action="@{/admin/category/create}"
+						th:object="${category}" method="post">
+						<label for="name"><strong>Add new category</strong></label><br>
+						<div class="form-group">
+							<label for="categoryId">Category ID:</label>
+							<input type="hidden" th:field="*{isEdit}"> <input
+								type="text" class="form-control" name="categoryId"
+								id="categoryId" th:field="*{categoryId}"
+								aria-describedby="categoryhelpId" placeholder="Category ID"
+								readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" name="name" id="name"
+								th:field="*{name}" aria-describedby="namhelpId"
+								placeholder="Category Name" required="required">
+
+						</div>
+						<button class="btn btn-primary">Create</button>
+						<button class="btn btn-info">Update</button>
+						<button class="btn btn-danger">
+						th:onclick="confirm('Bạn có muốn xóa không bạn ơi!!!');"
+							<a
+								th:href="@{'/admin/category/delete/'+ ${category.categoryId}}"
+								style="color: white; text-decoration: none">Delete</a>
+						</button>
+						<button type="reset" class="btn btn-warning">
+							<a style="color: white; text-decoration: none"  th:href="@{/admin/category}">Reset</a>
+						</button>
+					</form>
+					
+					<div class="col">
+						<form action="#">
+							<div class="form-inline float-right">
+								<input type="text" class="form-control" name="name" id="name"
+									aria-describedby="helpId" placeholder="Search">
+								<button class="btn btn-info">Search</button>
+							</div>
+						</form>
+					</div>
+					<br>
+					<form action="" method="get">
+					<label for="size">Page Size: </label>
+					<select name="size"
+						id="size" class="form control">
+						<option value="">All</option>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+					</select>
+					</form>
+					
+					<div th:if="${message != null}" class="alert alert-primary"
+						role="alert">
+						<i>[[${message}]]</i>
+					</div>
+					<table class="table table-bordered">
+						<tr class="table-danger">
+							<th style="text-align: center;">ID</th>
+							<th style="text-align: center;">Name</th>
+							<th style="text-align: center;">Action</th>
+						</tr>
+						<tr th:each="category : ${categories}">
+							<td style="text-align: center;" th:text="${category.categoryId}"></td>
+							<td th:text="${category.name}"></td>
+							<td style="text-align: center;"><a
+								class="badge bg-warning text-dark"
+								style="text-decoration: none;"
+								th:href="@{/admin/category/edit/{categoryId}(categoryId=${category.categoryId})}"><span
+									style="color: white;">Edit</span></a> <a
+								class="badge bg-danger text-dark"
+								style="text-decoration: none; color: white;"
+								th:href="@{/admin/category/delete/{categoryId}(categoryId=${category.categoryId})}"><span
+									style="color: white;">Delete</span></a></td>
+						</tr>
+					</table>
+				</div>
+				<form action="">
+					<div class="form-group" style="padding-left: 40%;">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#">First</a></li>
+							<li class="page-item"><a class="page-link" href="#">Prev</a></li>
+							<li class="page-item"><a class="page-link" href="#">Next</a></li>
+							<li class="page-item"><a class="page-link" href="#">Last</a></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+	footer
+	<footer>
+		<div class="card text-center bg-secondary"
+			style="margin-top: 5%; bottom: 0; width: 100%; height: 102px;">
+			<div class="card-body">
+				<h5 class="card-title" style="color: white;">Technogory Store</h5>
+				<p class="card-text" style="color: white;">@Copy right by
+					DongDong</p>
+
+			</div>
+		</div>
+	</footer>
+	Optional JavaScript
+	jQuery first, then Popper.js, then Bootstrap JS
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+</body>
+</html> -->

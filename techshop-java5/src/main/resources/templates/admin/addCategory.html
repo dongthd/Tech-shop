@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+
+<head>
+
+</head>
+<body>
+	<section class="row mt-5" layout:fragment="content">
+           <div class="col-6 offset-3 mt-4">
+             <form action="#" th:action="@{/admin/category/saveOrUpdate}" th:object="${category}" method="post">
+             <div class="card">
+                 <div class="col mt-3">
+                     <button class="btn btn-info">
+						<a th:href="@{/admin/category}" style="color: white; text-decoration: none;">
+							<i class="fas fa-align-justify"></i> Danh sách nhãn hiệu</a>
+						</button>
+						<hr>
+						<!-- <div th:if="${message != null}" class="alert alert-danger" role="alert">
+									<i>[[${message}]]</i>
+								</div> -->
+                 </div>
+                 <div class="card-body">
+                     <div class="form-group">
+                       <label for="categoryId">Mã nhãn hiệu <a style="color: red"><strong>*</strong></a></label>
+                       <input type="hidden" th:field="*{isEdit}">
+                       <input type="text" th:field="*{categoryId}" class="form-control" name="categoryId" id="categoryId" aria-describedby="categoryhelpId" placeholder="Mã nhãn hiệu ?" readonly="readonly">
+                       <small th:if="${#fields.hasErrors('categoryId')}" id="categoryhelpId" class="form-text text-muted">Category id is required</small>
+                     </div>
+                     <div class="form-group">
+                       <label for="name">Tên nhãn hiệu <a style="color: red"><strong>*</strong></a></label>
+                       <input type="text" th:field="*{name}" class="form-control" id="name" aria-describedby="namhelpId" placeholder="Tên nhãn hiệu ?">
+                       <small th:if="${#fields.hasErrors('name')}" id="namehelpId" class="form-text text-muted"><a style="color: red">Tên nhãn hiệu là bắt buộc và hợp lệ !</a></small>
+                     </div>
+                 </div>
+                 <div class="card-footer text-muted">
+                 	<button class="btn btn-primary"><i class="fas fa-save"></i>
+                 		<span th:if="${category.isEdit}">Cập nhật</span>
+                 		<span th:unless="${category.isEdit}">Thêm mới</span>
+                 	</button>
+                 	
+                    <button type="reset" class="btn btn-success"><i class="fas fa-redo-alt"></i> Reset</button>
+
+                 </div>
+             </div>
+           </form>
+           </div>
+	</section>
+</body>
+</html>
